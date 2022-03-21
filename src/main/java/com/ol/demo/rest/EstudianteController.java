@@ -52,6 +52,26 @@ public class EstudianteController {
         }   
     }
     
+    @PostMapping("/estudiante")
+    public Estudiantes grabarEstudiante(@RequestBody Estudiantes estudiante){
+        try {
+            estudiantesJpaController.edit(estudiante);
+            return estudiante;
+        } catch (Exception e) {
+            System.out.println("El estudiante no ha podido ser actualizado");
+            return null;
+        }
+    }
+    
+    @DeleteMapping("/estudiante/{id}")
+    public String borrarEstudiante(@PathVariable("id") int id){
+        try {
+             estudiantesJpaController.destroy(id);
+             return "{\"message\":\"El estudiante ha sido borrado con exito\"}";
+        } catch (Exception e) {
+             return "{\"message\":\"El estudiante no pudo ser borrado\"}";   
+        }
+    }
     /*
     @PostMapping("/estudiante")
      public Estudiantes grabarEstudiante(@RequestBody Estudiantes estudiante){

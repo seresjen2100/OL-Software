@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -65,9 +66,10 @@ public class Estudiantes implements Serializable {
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
-    @JoinColumn(name = "curso", referencedColumnName = "nombre")
-    @ManyToOne
-    private Cursos curso;
+    //@JoinColumn(name = "curso", referencedColumnName = "nombre")
+    //@ManyToOne
+    @Column(name = "curso")
+    private String curso;
 
     public Estudiantes() {
     }
@@ -81,7 +83,7 @@ public class Estudiantes implements Serializable {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
-    }
+    } 
 
     public Integer getId() {
         return id;
@@ -147,11 +149,11 @@ public class Estudiantes implements Serializable {
         this.fecha = fecha;
     }
 
-    public Cursos getCurso() {
+    public String getCurso() {
         return curso;
     }
 
-    public void setCurso(Cursos curso) {
+    public void setCurso(String curso) {
         this.curso = curso;
     }
 
