@@ -39,6 +39,19 @@ public class EstudianteController {
         List<Estudiantes> estudiantes = estudiantesJpaController.findEstudiantesEntities() ;
         return estudiantes;
     }
+    
+    @PutMapping("/estudiante")
+    public Estudiantes actualizarEstudiante(@RequestBody Estudiantes estudiante){
+        
+        try {
+            estudiantesJpaController.edit(estudiante);
+            return estudiante;
+        } catch (Exception e) {
+            System.err.println("El Estudiante no ha podido ser actualizado");
+            return null;
+        }   
+    }
+    
     /*
     @PostMapping("/estudiante")
      public Estudiantes grabarEstudiante(@RequestBody Estudiantes estudiante){
